@@ -87,7 +87,7 @@ convert_rowdata2df <-
 #' @param dataSource dataSource
 #' @export
 get_efp_absolute <-
-  function(primaryGene, dataSource = DATASOURCE[-12]){
+  function(primaryGene, dataSource = eFPscraper::DATASOURCE){
     li <-
       lapply(
         dataSource,
@@ -112,7 +112,7 @@ get_efp_absolute <-
 #' @param dataSource dataSource
 #' @export
 get_efp_relative <-
-  function(primaryGene, dataSource = DATASOURCE[-12]){
+  function(primaryGene, dataSource = eFPscraper::DATASOURCE){
     li <-
       lapply(
         dataSource,
