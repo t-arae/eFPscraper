@@ -4,12 +4,12 @@
 \alias{get_efp_absolute}
 \title{Get Absolute eFP browser data}
 \usage{
-get_efp_absolute(dataSource = DATASOURCE[-12], primaryGene)
+get_efp_absolute(primaryGene, dataSource = eFPscraper::DATASOURCE)
 }
 \arguments{
-\item{dataSource}{dataSource}
-
 \item{primaryGene}{AGI code}
+
+\item{dataSource}{dataSource}
 }
 \description{
 Get Absolute eFP browser data
