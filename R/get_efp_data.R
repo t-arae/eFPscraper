@@ -104,51 +104,56 @@ convert_rowdata2df <-
 
 
 #' Get Absolute eFP browser data
+#' @importFrom progress progress_bar
 #' @param primaryGene AGI code
 #' @param dataSource dataSource
 #' @export
 get_efp_absolute <-
   function(primaryGene, dataSource = DATASOURCE[-12]){
-    li <-
-      lapply(
-        dataSource,
-        function(x){
-          temp <-
-            get_efp_data(
-              dataSource = x,
-              modeInput = "Absolute",
-              primaryGene = primaryGene)
-          temp <-
-            convert_rowdata2df(temp, "Absolute")
-          Sys.sleep(1)
-          return(temp)
-        }
-      )
+    pb <- progress_bar$new(
+      format = " downloading :what [:bar] :percent in :elapsed",
+      total= length(dataSource), clear = FALSE, width = 60)
+    pb$tick(0)
+    li <- list()
+    for(i in 1:length(dataSource)){
+      pb$tick(tokens = list(what = dataSource[i]))
+      temp <-
+        get_efp_data(
+          dataSource = dataSource[i],
+          modeInput = "Absolute",
+          primaryGene = primaryGene)
+      temp <- convert_rowdata2df(temp, "Absolute")
+      Sys.sleep(1)
+      li[[i]] <- temp
+    }
     names(li) <- dataSource
     li
   }
 
 #' Get Relative eFP browser data
+#' @importFrom progress progress_bar
 #' @param primaryGene AGI code
 #' @param dataSource dataSource
 #' @export
 get_efp_relative <-
   function(primaryGene, dataSource = DATASOURCE[-12]){
-    li <-
-      lapply(
-        dataSource,
-        function(x){
-          temp <-
-            get_efp_data(
-              dataSource = x,
-              modeInput = "Relative",
-              primaryGene = primaryGene)
-          temp <-
-            convert_rowdata2df(temp, "Relative")
-          Sys.sleep(1)
-          return(temp)
-        }
-      )
+    pb <- progress_bar$new(
+      format = " downloading :what [:bar] :percent in :elapsed",
+      total= length(dataSource), clear = FALSE, width = 60)
+    pb$tick(0)
+    li <- list()
+    for(i in 1:length(dataSource)){
+      pb$tick(tokens = list(what = dataSource[i]))
+      temp <-
+        get_efp_data(
+          dataSource = dataSource[i],
+          modeInput = "Relative",
+          primaryGene = primaryGene)
+      temp <- convert_rowdata2df(temp, "Relative")
+      Sys.sleep(1)
+      li[[i]] <- temp
+    }
     names(li) <- dataSource
     li
   }
+

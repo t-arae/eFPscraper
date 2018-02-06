@@ -15,4 +15,5 @@ Imports:
     magrittr,
     rvest,
     stringr,
-    dplyr
+    dplyr,
+    progress
