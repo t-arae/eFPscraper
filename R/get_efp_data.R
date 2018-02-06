@@ -1,26 +1,5 @@
 if(getRversion() >= "2.15.1")  utils::globalVariables(c("."))
 
-DATASOURCE <-
-  c(
-    "Abiotic_Stress", #1
-    "Abiotic_Stress_II", #2
-    "Biotic_Stress", #3
-    "Biotic_Stress_II", #4
-    "Chemical", #5
-    "Developmental_Map", #6
-    "Developmental_Mutants", #7
-    "Guard_Cell", #8
-    "Hormone", #9
-    "Lateral_Root_Initiation", #10
-    "Light_Series", #11
-    "Natural_Variation", #12
-    "Regeneration", #13
-    "Root", #14
-    "Root_II", #15
-    "Seed", #16
-    "Tissue_Specific" #17
-  )
-
 #' Get eFP browser data
 #' @importFrom xml2 read_html
 #' @importFrom magrittr %>%
@@ -109,7 +88,7 @@ convert_rowdata2df <-
 #' @param dataSource dataSource
 #' @export
 get_efp_absolute <-
-  function(primaryGene, dataSource = DATASOURCE[-12]){
+  function(primaryGene, dataSource = eFPscraper::DATASOURCE){
     pb <- progress_bar$new(
       format = " downloading :what [:bar] :percent in :elapsed",
       total= length(dataSource), clear = FALSE, width = 60)
@@ -136,7 +115,7 @@ get_efp_absolute <-
 #' @param dataSource dataSource
 #' @export
 get_efp_relative <-
-  function(primaryGene, dataSource = DATASOURCE[-12]){
+  function(primaryGene, dataSource = eFPscrapepr::DATASOURCE){
     pb <- progress_bar$new(
       format = " downloading :what [:bar] :percent in :elapsed",
       total= length(dataSource), clear = FALSE, width = 60)

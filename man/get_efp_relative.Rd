@@ -4,7 +4,7 @@
 \alias{get_efp_relative}
 \title{Get Relative eFP browser data}
 \usage{
-get_efp_relative(primaryGene, dataSource = DATASOURCE[-12])
+get_efp_relative(primaryGene, dataSource = eFPscrapepr::DATASOURCE)
 }
 \arguments{
 \item{primaryGene}{AGI code}
